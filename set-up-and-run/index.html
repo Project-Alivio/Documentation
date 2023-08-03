@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Set Up and Run Tutorial - Project Alivio</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Set Up and Run Tutorial";
+    var mkdocs_page_input_path = "set-up-and-run.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Project Alivio</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../aws/">AWS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../architecture/">Application Architecture</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../quicklinks/">Quicklinks</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Set Up and Run Tutorial</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-first-installations-python-git-etc">1. First Installations: Python, git, etc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-web-dev-specific-installations">2. Web Dev Specific Installations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-clone-the-repo-from-github">3. Clone the Repo from Github</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-alivio-specific-installations">4. Alivio Specific Installations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-set-up-env-environment-file-new-for-this-year-everyone-must-do-it">5. Set Up .env (Environment) File (NEW FOR THIS YEAR, EVERYONE MUST DO IT)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-ides">6. IDEs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-run">7. Run</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-debugging-tips">8. Debugging Tips</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../stack/">Technology Stack</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../workflow/">Workflow</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Project Alivio</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Set Up and Run Tutorial</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="setup">Setup</h1>
+<h2 id="1-first-installations-python-git-etc">1. <strong>First Installations: Python, git, etc</strong></h2>
+<ul>
+<li>macOS<ul>
+<li><code>$ brew install python3 java git tree wget</code></li>
+<li><code>$ brew install java</code></li>
+</ul>
+</li>
+<li>WSL/Linux<ul>
+<li><code>$ sudo apt-get update</code></li>
+<li><code>$ sudo apt-get install python3 python3-pip python3-venv python3-wheel python3-setuptools git tree default-jre</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-web-dev-specific-installations">2. <strong>Web Dev Specific Installations</strong></h2>
+<ul>
+<li>macOS<ul>
+<li><code>$ brew install sqlite3 curl coreutils node</code></li>
+</ul>
+</li>
+<li>WSL/Linux<ul>
+<li><code>$ sudo apt-get install sqlite3 curl nodejs npm</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-clone-the-repo-from-github">3. <strong>Clone the Repo from Github</strong></h2>
+<ul>
+<li>First, make sure you have Github Authentication set up. You can follow <a href="https://eecs280staff.github.io/tutorials/setup_git.html#github-authentication">this EECS 280 tutorial</a> if you need help, and can choose to use with an SSH key or Personal Access Token (PAT).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you chose to use an SSH key to set up your Github Authentication, there is one more step you must take in order to be able to push and pull from Alivio's repositories. </p>
+</div>
+<ol>
+<li>Navigate to Github on your browser, make sure that you are signed in, and go the the settings page. This can be done by clicking your profile icon in the top right corner of the page.</li>
+<li>Now that you're in your settings, go to the SSH and GPG keys page. Find the key that you're using under the Authentication Keys section.</li>
+<li>Then, for that particular key, click the Configure SSO button, and allow access to the Project Alivio organization. </li>
+</ol>
+<p>To clone the repo do one of the following: </p>
+<ul>
+<li><em>If you use SSH</em>: <code>$ git clone git@github.com:Project-Alivio/alivio-prioritization.git</code></li>
+<li><em>If you use PAT</em>: <code>$ git clone https://github.com/Project-Alivio/alivio-prioritization.git</code></li>
+</ul>
+<h2 id="4-alivio-specific-installations">4. <strong>Alivio Specific Installations</strong></h2>
+<ul>
+<li>First, activate a virtual environment<ul>
+<li><code>$ python3 -m venv env</code></li>
+<li><code>$ source env/bin/activate</code></li>
+</ul>
+</li>
+<li>Next, install Python packages<ul>
+<li><code>$ pip install -r requirements.txt</code> </li>
+<li><code>$ pre-commit install</code></li>
+</ul>
+</li>
+<li>Then, install the front-end related packages<ul>
+<li>Run: <code>$ npm ci .</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="5-set-up-env-environment-file-new-for-this-year-everyone-must-do-it">5. Set Up .env (Environment) File (NEW FOR THIS YEAR, EVERYONE MUST DO IT)</h2>
+<ul>
+<li>Navigate to the root of the alivio directory if you aren’t already there</li>
+<li>Run <code>$ touch .env</code></li>
+<li>Open the .env file in an IDE like VSCode</li>
+<li>Add the following environment variables given by Swaraj to the file</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you're on Windows/WSL, sometimes copying and pasting from some other file can add hidden characters or mess up the line endings in the .env file. After adding in the appropriate environment variables, run <code>$ dos2unix .env</code>. If you don't have dos2unix installed, run <code>$ sudo apt install dos2unix</code>.</p>
+</div>
+<h2 id="6-ides">6. <strong>IDEs</strong></h2>
+<ul>
+<li>VS Code</li>
+<li>Optional: DataGrip, this is really useful for running SQL queries<ul>
+<li>Sign up for a JetBrains Education license.</li>
+<li>Follow the steps that JetBrains outlines as you apply (you’re going to have to activate it through your umich email)</li>
+<li>When your account is all set up, download DataGrip for your appropriate OS</li>
+<li>Launch DataGrip and create a new project with whatever name you want</li>
+<li>On the left hand side of your screen, you’ll see the words “Database Explorer”, and there should be a “+” symbol button near it</li>
+<li>Click the + symbol, then click “Data Sources”, and finally click PostgreSQL</li>
+<li>A dialog box will pop up asking you to fill out the following fields:<ul>
+<li><strong>Name</strong>: postgres@AWSRDS</li>
+<li><strong>Host</strong>: alivio-prioritization-db.c4tuxwdpwsfq.us-east-1.rds.amazonaws.com</li>
+<li><strong>Port</strong>: 5432</li>
+<li><strong>Authentication</strong>: User &amp; Password</li>
+<li><strong>User</strong>: alivio</li>
+<li><strong>Password</strong>: <strong><em>ask Swaraj for this one</em></strong></li>
+<li><strong>Database</strong>: ebdb</li>
+<li><strong>URL</strong>: jdbc:postgresql://alivio-prioritization-db.c4tuxwdpwsfq.us-east-1.rds.amazonaws.com:5432/ebdb</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Hit “OK” in the dialog box and then you should see postgres@AWSRDS show up on the left hand side panel.</li>
+<li>To navigate to our DB tables, hit the drop down arrows on postgres@AWSRDS &gt; ebdb &gt; public &gt; tables</li>
+<li>If you ever want to run a query, right click on postgres@AWSRDS, hit the “Jump to Query Console” option, and then “Open Default Console”<ul>
+<li>Type whatever query you want and hit the green run button (looks like a play button)</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-run">7. Run</h2>
+<ol>
+<li>Running the App on your Browser<ul>
+<li>cd into the project directory</li>
+<li>Make sure virtual environment is activated<ul>
+<li>Run <code>$ source env/bin/activate</code></li>
+</ul>
+</li>
+<li>Run <code>$ ./bin/alivio start</code></li>
+<li>Navigate to localhost:8000 in your browser</li>
+</ul>
+</li>
+<li>To create a new branch on git: <code>$ git checkout -b &lt;name_of_branch&gt;</code></li>
+</ol>
+<h2 id="8-debugging-tips">8. Debugging Tips</h2>
+<ul>
+<li>For Python related debugging, using <a href="https://docs.python.org/3/library/pdb.html">pdb</a> can be helpful.<ul>
+<li>As the linked documentation says, simply <code>import pdb</code> in the Python file you're debugging in and type in the line <code>pdb.set_trace()</code> above where you want to start debugging.</li>
+<li><code>pdb.set_trace()</code> now functions as a breakpoint.</li>
+<li>Once the breakpoint is triggered, look at your terminal (from which the app was run) and you should see that you have entered the pdb console.</li>
+<li>See the section on debugging commands in the linked documentation to understand how to use pdb.</li>
+</ul>
+</li>
+<li>For JavaScript related debugging, using the <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools">developer tools</a> in your browser can be helpful.<ul>
+<li>Here, if you navigate to the Sources tab and open the alivio folder in the left side panel and go into the client directory, you should see all of the .jsx source files.</li>
+<li>You can open up these files, set breakpoints wherever, and have them triggered as you interact with the UX.</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../stack/" class="btn btn-neutral float-right" title="Technology Stack">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../quicklinks/" class="btn btn-neutral" title="Quicklinks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../quicklinks/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../stack/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
