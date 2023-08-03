@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>AWS - Project Alivio</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "AWS";
+    var mkdocs_page_input_path = "aws.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Project Alivio</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">AWS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#deploying-to-ecr-pushing-to-elb">Deploying to ECR, pushing to ELB.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#waf-end-to-end-encryption">WAF (End to End Encryption)</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../architecture/">Application Architecture</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../quicklinks/">Quicklinks</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../set-up-and-run/">Set Up and Run Tutorial</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../stack/">Technology Stack</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../workflow/">Workflow</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Project Alivio</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>AWS</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview</h1>
+<p>Alivio primarily uses the following AWS Services: </p>
+<ul>
+<li>ECR: Elastic Container Registry for storing Docker Images. </li>
+<li>EC2: An elastic load balancer to handle changing user demand. </li>
+<li>RDS: A relational database service.</li>
+<li>WAF: A web application firewall for security. </li>
+</ul>
+<p>This document covers the following: </p>
+<ul>
+<li>Deploying the application to the ECR (Elastic Container Registry) and loading it into the ELB (Elastic Load Balancer) </li>
+<li>The web application firewall (WAF) </li>
+</ul>
+<h2 id="deploying-to-ecr-pushing-to-elb">Deploying to ECR, pushing to ELB.</h2>
+<p>To redeploy the application on AWS, follow the steps in the section below: </p>
+<ul>
+<li>The main branch of the application has a file named deploy-image.sh running this script will push the docker image to ECR. </li>
+<li>If the script stops working or isn’t available for whatever reason, the commands for the script can be found at the AWS Management Console. <ul>
+<li>Google &gt; AWS Management Console &gt; Services &gt; ECR &gt; Repositories &gt; alivio-testing -&gt; View Push Commands </li>
+</ul>
+</li>
+</ul>
+<p><strong>Now do the following</strong>: </p>
+<ol>
+<li>Run the script: <code>$ bash deploy-image.sh</code></li>
+<li>Go to: AWS Management Console &gt; Elastic Beanstalk &gt; Environments &gt; environment_name (e.g Aliviotest1-env)  &gt; Click Upload and Deploy &gt; Select Dockerrun.aws.json </li>
+<li>Done! </li>
+</ol>
+<h2 id="waf-end-to-end-encryption">WAF (End to End Encryption)</h2>
+<p>This section details how to add a new ACL (Access Control List) and link it to an existing application. It requires the following steps already be completed: </p>
+<ul>
+<li>A docker image has been created and pushed to ECR, and that it is also on an ELB.</li>
+<li>There is a ALB (Application Load Balancer) that is linked to an EC2 Instance. </li>
+</ul>
+<p><strong>To add more rules to the ACL</strong>:</p>
+<p>Google &gt; AWS Management Console &gt; Services &gt; WAF and Shield &gt; Web ACL’s &gt; Region=US-east-2 (ohio) </p>
+<p>Currently the only ACL is alivioTestingACL, in the future if we ever need to make a new ACL (development vs live use), follow these steps: </p>
+<p>Go to the ACL: google &gt; AWS Management Console &gt; Services &gt; WAF and Shield &gt; Web ACL’s, click: create web ACL, use the following fields: </p>
+<ul>
+<li>Resource Type: Regional resources (we’re using an ALB) </li>
+<li>Region: US-East (Ohio) </li>
+<li>
+<p>Associated AWS resources = <code>&lt;EC2-instance-name&gt;</code> </p>
+<p>(i) The console states this step is optional in the start-up process, it is NOT optional, here you must link your ACL to the EC2 instance. Without this step the ACL will not stand in-front of any requests for the ALB. </p>
+<p>(ii) If (i) doesn’t work, it should also be possible to go to Services &gt; EC2 &gt; instance_name &gt; security groups and then link the ACL there (although I didn’t have success with this method at the time of writing). </p>
+</li>
+</ul>
+<p>Once the ACL has been generated, add any rules you need, the testing-build uses the following. </p>
+<ul>
+<li>A regional rule (only allow access from Guatemala, US) </li>
+<li>Rule for SQL injections </li>
+<li>General AWS safety rules </li>
+</ul>
+<p>Done!</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../architecture/" class="btn btn-neutral float-right" title="Application Architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

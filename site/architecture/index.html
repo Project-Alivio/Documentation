@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Application Architecture - Project Alivio</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Application Architecture";
+    var mkdocs_page_input_path = "architecture.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Project Alivio</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../aws/">AWS</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Application Architecture</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../quicklinks/">Quicklinks</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../set-up-and-run/">Set Up and Run Tutorial</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../stack/">Technology Stack</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../workflow/">Workflow</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Project Alivio</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Application Architecture</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overall-architecture-and-flow-of-data">Overall Architecture and Flow of Data</h1>
+<p>Our app's overall architecture can best be summarized by this diagram:</p>
+<p><img alt="Alivio-Architecture-Diagram" src="../images/alivio-diagram.png" /></p>
+<p>Certain parts are explained below later in this section, while others (like AWS) have their own section. At a high level, the flow of data throughout the app can best be described as follows:</p>
+<ul>
+<li>When a user interacts with the UX, they are interacting front end build using JavaScript and React.<ul>
+<li>The entire app, from the front end, to the back end and database, is hosted on AWS. The front and back end are bundled up into a Docker image that is run on an AWS service called ElasticBeanstalk.</li>
+</ul>
+</li>
+<li>If necessary, the JavaScript then makes an API call using the <code>fetch</code> function to our REST API written in Python and Flask.</li>
+<li>Before the API call even hits the desired endpoint, a series of intermediary steps occur.<ul>
+<li>First, the API call is intercepted by a service worker. If the service worker already has a token cached, it hands the call to the API endpoint.</li>
+<li>If a token is not cached, a call to a third party API is made to acquire a valid token from an authentication and authorization service called Auth0. With the token, the service worker now proceeds to the API endpoint.</li>
+<li>If the network is offline, the service worker returns a default offline page to render with cached data.</li>
+</ul>
+</li>
+<li>When the API call hits the appropriate endpoint, it reaches the corresponding Flask route decorator (specified with the @ symbol). Within the API endpoint function that is executed, a database query is run.<ul>
+<li>In order to execute a query on a database hosted in the cloud on AWS, a Python library called boto3 is used to make a connection to the database.</li>
+</ul>
+</li>
+</ul>
+<h1 id="database-schema">Database Schema</h1>
+<p>A <a href="https://www.ibm.com/topics/database-schema#:~:text=the%20next%20step-,What%20is%20a%20database%20schema%3F,the%20relationships%20between%20these%20entities.">database schema</a> defines data organization within a relational database. In this section, we describe the Alivio Database Schema. </p>
+<p><img alt="Alivio-Schema-Diagram" src="../images/DBMS_ER_diagram_UML_notation.png" /></p>
+<p>For any column that has a timestamp data type, those timestamps are stored in the UTC timezone. When times are actually rendered on the front end, libraries that we use such as moment.js convert from UTC to local time.</p>
+<p>In the patient table, here are some specific columns that we would like to callout in order to explain how they store data.</p>
+<ul>
+<li>
+<p><strong>Stay Duration</strong></p>
+<ul>
+<li>Stores a timestamp of when the patient card was added. In the fornt end, this timestamp is subtracted from the current time to produce the stay duration in days as an integer.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ulcer Map Front and back and Back</strong> </p>
+<ul>
+<li>Stores a big string of pairs delimited by the | character. The pairs are delimited by commas, so the entire string looks something like this: <code>&lt;x1&gt;,&lt;y1&gt;|&lt;x2&gt;,&lt;y2&gt;|</code>.</li>
+<li>Each pair holds the values <code>&lt;x&gt;,&lt;y&gt;</code>, where x represents the x coordinate of the ulcer dot on the image and y represents the corresponding y coordinate.</li>
+</ul>
+</li>
+<li>
+<p><strong>Average Turn Time</strong> </p>
+<ul>
+<li>Stores a varchar(500). </li>
+<li>Stores the total time a patient has been in the ICU and the number of turns seperated by a comma <ul>
+<li>Following the format <code>&lt;total-time&gt;,&lt;turns&gt;</code></li>
+<li>eg: <code>1005,6</code></li>
+<li>When this data is called, the string can be parsed and the average turn time can be calculated by doing <code>total-time / turns</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Braden History</strong></p>
+<ul>
+<li>Stores a big string of pairs delimited by semicolons. The pairs are delimited by commas. </li>
+<li>The string follows this format: <code>&lt;timestamp&gt;,&lt;braden-value&gt;;&lt;timestamp-2&gt;,&lt;braden-value-2&gt;; ... ;&lt;timestamp-n&gt;,&lt;braden-value-n&gt;;</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="service-workers">Service Workers</h1>
+<ul>
+<li>We use a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">service worker API</a> in our application. A service worker is a proxy server that sits between our web app, the browser and the network (when it is available). </li>
+<li>
+<p>The purpose of the service worker is to create an offline user experience for our application. </p>
+<ul>
+<li>Because our app is meant to be used in an ICU, we must try and maintain 100% uptime for our application. A service worker helps us achieve this goal. </li>
+</ul>
+</li>
+<li>
+<p>The code for the service worker can be found in the file: <code>/serviceWorker.js</code>. As of the time of writing, it is in the <code>archive_token</code> branch and hasn't been merged into main. </p>
+</li>
+</ul>
+<h2 id="how-the-service-worker-functions">How the service worker functions</h2>
+<ul>
+<li>The service worker runs in a different thread than the main application, and caches application data. When internet connection is disrupted cached assets can be used to maintain functionality of our application. <ul>
+<li>Cached assets can be used for offline functionality but also to speed up the app performance in general. </li>
+<li>The service worker will intercept API calls that the app makes and in the event that it has cached the assets that are being requested, it will stop the call early and provide the response instead. </li>
+</ul>
+</li>
+<li>The service worker uses two types of caches. A <strong>static</strong> and a <strong>dynamic</strong> cache.<ul>
+<li>We use the <strong>dynamic</strong> cache to store data that changes such as patient data (patient cards). </li>
+<li>We use the <strong>static</strong> cache to store app assets </li>
+</ul>
+</li>
+</ul>
+<h1 id="token-authentication">Token Authentication</h1>
+<p><a href="https://www.okta.com/identity-101/what-is-token-based-authentication/">Token-based authentication</a> is a protocol which allows users to verify their identity, and in return receive a unique access token. During the lifetime of the token, users can then access different parts of our app. Please read the link about token authetication before proceeding.</p>
+<ul>
+<li>Project Alivio uses token authentication. To autheticate into the app, a user will type in a username and password that will be verified based on info stored in the database. If the verfication proceeds, the login API endpoint will make a request for a token to an Auth0 API (see the <code>get_token</code> function in <code>middleware/token_auth.py</code>) and the service worker will cache it. <ul>
+<li>This token allows users to interact with our API endpoints and therefore our database. </li>
+<li>The purpose of token authentication is to create a secure system for users to access sensitive patient data. </li>
+<li>Once a user logs in, the user has a 24 hr token that will allow them to use the app fully. After 24 hours or a logout, the token expires. </li>
+</ul>
+</li>
+<li>Code for token authentication can be found in <code>api/login.py</code> and <code>middlerware/token_auth.py</code>. </li>
+</ul>
+<h1 id="file-structure">File Structure</h1>
+<p>Here is the output of the command: <code>$ tree -I "env"</code> with explanation. </p>
+<pre><code class="language-cpp">.
+├── api                     // back-end
+│   ├── __init__.py
+│   ├── braden.py
+│   ├── clock.py
+│   ├── index.py
+│   └── stats.py
+├── application.py
+├── bin                 
+│   └── alivio
+├── client                  // front-end
+│   ├── addPatient.jsx
+│   ├── bradenInputs.jsx
+│   ├── calculator.jsx
+│   ├── clock.jsx
+│   ├── feedbackForm.jsx
+│   ├── helpers.js
+│   ├── home.jsx
+│   ├── main.jsx
+│   ├── patientCard.jsx
+│   ├── patientStats.jsx
+│   ├── stats.jsx
+│   ├── styles
+│   │   ├── calculator.css
+│   │   ├── card.css
+│   │   ├── clock.css
+│   │   ├── home.css
+│   │   └── stats.css
+│   └── ulcerMap.jsx
+├── config.py
+├── model.py
+├── package-lock.json
+├── package.json
+├── requirements.txt
+├── setup.py
+├── sql
+│   └── schema.sql
+├── static                 // store static assets such as images
+│   ├── assets
+│   │   ├── ulcer_map_back.png
+│   │   └── ulcer_map_front.png
+│   ├── images
+│   │   ├── ulcer_map_back.png
+│   │   └── ulcer_map_front.png
+│   └── js
+│       └── bundle.js.map
+├── templates
+│   └── index.html
+└── webpack.config.js
+
+10 directories, 38 files
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../components/" class="btn btn-neutral float-right" title="Components">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../aws/" class="btn btn-neutral" title="AWS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../aws/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../components/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
