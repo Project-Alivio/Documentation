@@ -1,17 +1,7 @@
-# Welcome to MkDocs
+# Alivio Documentation
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This site is meant for members of the Project Alivio Software team to document the application for future and current members. You can view the Alivio MHEAL Site [here](http://mheal.engin.umich.edu/projectalivio).
 
-## Commands
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+# Contact
+Questions or concerns? Contact Alivio's current software lead Swaraj (swarajy@umich.edu).

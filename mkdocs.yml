@@ -1,1 +1,18 @@
-site_name: My Docs
+site_name: Project Alivio
+nav:
+    - Home: index.md
+    - AWS: aws.md
+    - Application Architecture: architecture.md
+    - Components: components.md
+    - Quicklinks: quicklinks.md
+    - Set Up and Run Tutorial: set-up-and-run.md 
+    - Technology Stack: stack.md
+    - Workflow: workflow.md
+theme: readthedocs
+
+markdown_extensions:
+  - admonition
+
+plugins:
+  - search
+  - callouts
