@@ -1,72 +1,66 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Set Up and Run Tutorial - Project Alivio</title>
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Set Up and Run Tutorial";
-    var mkdocs_page_input_path = "set-up-and-run.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Set Up and Run Tutorial - Project Alivio</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Set Up and Run Tutorial";
+        var mkdocs_page_input_path = "set-up-and-run.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> Project Alivio</a>
-        <div role="search">
+          <a href=".." class="icon icon-home"> Project Alivio
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../aws/">AWS</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../architecture/">Application Architecture</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../quicklinks/">Quicklinks</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Set Up and Run Tutorial</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../aws/">AWS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture/">Application Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quicklinks/">Quicklinks</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Set Up and Run Tutorial</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#1-first-installations-python-git-etc">1. First Installations: Python, git, etc</a>
     </li>
@@ -84,48 +78,49 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#8-debugging-tips">8. Debugging Tips</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-managing-node-versions">9. Managing Node Versions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#downloading-nvm">Downloading NVM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-and-managing-nodejs-versions">Installing and managing Node.js versions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#repairing-a-damaged-node-installation">Repairing a damaged Node installation</a>
+    </li>
+        </ul>
+    </li>
     </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../stack/">Technology Stack</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../workflow/">Workflow</a>
-                    </li>
-                </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stack/">Technology Stack</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../workflow/">Workflow</a>
+                </li>
+              </ul>
       </div>
     </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">Project Alivio</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Project Alivio</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Set Up and Run Tutorial</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Set Up and Run Tutorial</li>
     <li class="wy-breadcrumbs-aside">
-      
     </li>
   </ul>
-  
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="setup">Setup</h1>
 <h2 id="1-first-installations-python-git-etc">1. <strong>First Installations: Python, git, etc</strong></h2>
@@ -257,31 +252,89 @@
 </ul>
 </li>
 </ul>
+<h2 id="9-managing-node-versions">9. Managing Node Versions</h2>
+<ul>
+<li>Due to the fact that a significant chunk of Alivio's codebase was written 1.5 years ago, the latest, non-stable builds of Node aren't compatible with the Alivio application. However, if you're using a more recent version of node for another project on your computer, it's worth using <code>nvm</code> to manage changing versions of Node. (For example, taking EECS 485, and also doing Alivio). </li>
+<li>This section will describe how to download nvm and switch between versions of Node. It is <strong>OPTIONAL</strong> and only needs to be done if you have issues with Node.  </li>
+</ul>
+<h3 id="downloading-nvm">Downloading NVM</h3>
+<p>This section is written w/ the assumption that you're using WSL and Bash. If you're on MacOS you'll need to look up how to manage Node versions on MacOS. </p>
+<ul>
+<li>To install NVM, and set the source lines, run the following commands: </li>
+</ul>
+<pre><code class="language-bash">$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+$ export NVM_DIR=&quot;$([ -z &quot;${XDG_CONFIG_HOME-}&quot; ] &amp;&amp; printf %s &quot;${HOME}/.nvm&quot; || printf %s &quot;${XDG_CONFIG_HOME}/nvm&quot;)&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm
+</code></pre>
+<ul>
+<li>Then restart your terminal and run <code>$ nvm</code> to verify your installation. </li>
+</ul>
+<h3 id="installing-and-managing-nodejs-versions">Installing and managing Node.js versions</h3>
+<ul>
+<li>To install a Node version, run: </li>
+</ul>
+<pre><code class="language-bash">$ nvm install --&lt;version number&gt;
+</code></pre>
+<ul>
+<li>To see what versions of Node you have, run: </li>
+</ul>
+<pre><code class="language-bash">$ nvm ls
+</code></pre>
+<ul>
+<li>To switch node versions, run: </li>
+</ul>
+<pre><code class="language-bash">$ nvm use &lt;version number&gt;
+</code></pre>
+<h3 id="repairing-a-damaged-node-installation">Repairing a damaged Node installation</h3>
+<ul>
+<li>Again, this section is written for a WSL / Linux User (I don't have a mac) :( </li>
+</ul>
+<pre><code class="language-bash">$ sudo apt-get update 
+$ sudo apt-get clean 
+$ sudo apt-get autoremove 
+
+# at this point try and reinstall node / npm again. If it doesn't work continue
+
+$ sudo apt --fix-broken install 
+$ sudo apt-get update &amp;&amp; sudo apt-get upgrade
+$ sudo dpkg --configure -a 
+$ sudo apt-get install -f 
+
+# at this point try and reinstall node / npm again. If it doesn't work continue 
+
+# check for dependancies using
+$ sudo dpkg --configure -a # Hopefully you get an empty output here. 
+$ sudo apt-get remove nodejs 
+$ sudo apt-get remove npm 
+
+# cd to /etc/apt/sources.list.d and remove any node list you have 
+
+$ cd ~/../../etc/apt/sources.list.d/ # an example path on a standard ubuntu set up 
+
+# remove any node source list if there exists one. Then do: 
+
+$ sudo apt-get update
+
+# try reinstalling node js and npm again now. 
+# if this doesn't work you're on your own :( 
+</code></pre>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../quicklinks/" class="btn btn-neutral float-left" title="Quicklinks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../stack/" class="btn btn-neutral float-right" title="Technology Stack">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../quicklinks/" class="btn btn-neutral" title="Quicklinks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -289,24 +342,26 @@
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../quicklinks/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../stack/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../quicklinks/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../stack/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>

@@ -37,4 +37,6 @@ This page has some useful links for learning technologies that the app uses:
 - [React Tutorial, w3 schools](https://www.w3schools.com/REACT/default.asp)
 - [React JS Crash Course - YouTube](https://www.youtube.com/watch?v=w7ejDZ8SWv8)
 
+## AWS
 
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html)

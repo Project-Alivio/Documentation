@@ -98,3 +98,77 @@ To clone the repo do one of the following:
 - For JavaScript related debugging, using the [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools) in your browser can be helpful.
     - Here, if you navigate to the Sources tab and open the alivio folder in the left side panel and go into the client directory, you should see all of the .jsx source files.
     - You can open up these files, set breakpoints wherever, and have them triggered as you interact with the UX.
+
+## 9. Managing Node Versions
+
+- Due to the fact that a significant chunk of Alivio's codebase was written 1.5 years ago, the latest, non-stable builds of Node aren't compatible with the Alivio application. However, if you're using a more recent version of node for another project on your computer, it's worth using `nvm` to manage changing versions of Node. (For example, taking EECS 485, and also doing Alivio). 
+- This section will describe how to download nvm and switch between versions of Node. It is **OPTIONAL** and only needs to be done if you have issues with Node.  
+
+### Downloading NVM
+
+This section is written w/ the assumption that you're using WSL and Bash. If you're on MacOS you'll need to look up how to manage Node versions on MacOS. 
+
+- To install NVM, and set the source lines, run the following commands: 
+
+```bash
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+$ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+- Then restart your terminal and run `$ nvm` to verify your installation. 
+
+### Installing and managing Node.js versions 
+
+- To install a Node version, run: 
+
+```bash
+$ nvm install --<version number>
+```
+
+- To see what versions of Node you have, run: 
+
+```bash
+$ nvm ls
+```
+
+- To switch node versions, run: 
+
+```bash
+$ nvm use <version number>
+```
+
+### Repairing a damaged Node installation
+
+- Again, this section is written for a WSL / Linux User (I don't have a mac) :( 
+
+```bash
+$ sudo apt-get update 
+$ sudo apt-get clean 
+$ sudo apt-get autoremove 
+
+# at this point try and reinstall node / npm again. If it doesn't work continue
+
+$ sudo apt --fix-broken install 
+$ sudo apt-get update && sudo apt-get upgrade
+$ sudo dpkg --configure -a 
+$ sudo apt-get install -f 
+
+# at this point try and reinstall node / npm again. If it doesn't work continue 
+
+# check for dependancies using
+$ sudo dpkg --configure -a # Hopefully you get an empty output here. 
+$ sudo apt-get remove nodejs 
+$ sudo apt-get remove npm 
+
+# cd to /etc/apt/sources.list.d and remove any node list you have 
+
+$ cd ~/../../etc/apt/sources.list.d/ # an example path on a standard ubuntu set up 
+
+# remove any node source list if there exists one. Then do: 
+
+$ sudo apt-get update
+
+# try reinstalling node js and npm again now. 
+# if this doesn't work you're on your own :( 
+```
